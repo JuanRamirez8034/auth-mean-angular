@@ -1,1 +1,121 @@
-/* You can add global styles to this file, and also import other style files */
+/* estilos formularis */
+.form-pretty {
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px;
+  overflow: hidden;
+  border-radius: 20px;
+  /* filter: drop-shadow(0 0 10px #000ba8); */
+  box-shadow: 0 0 30px #ffffff9f;
+  position: relative;
+}
+
+.form-pretty .input-group {
+  filter: drop-shadow(0 0 1px #300e50);
+}
+
+.form-pretty * {
+  transition: all 0.1s ease-in;
+}
+
+.form-pretty div div span i {
+  color: blueviolet;
+}
+
+.form-pretty .backgorund-c1 {
+  display: block;
+  position: absolute;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  z-index: -1;
+  left: 5px;
+  top: 5px;
+  background: #ffffff;
+  border-radius: 20px;
+}
+
+.form-pretty .backgorund-c2 {
+  display: block;
+  position: absolute;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  left: 5px;
+  top: 5px;
+  border-radius: 20px;
+  background: #fffffff0;
+  /* background: #b8b8b8 url('../../../assets/angularloge.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 60% 60%; */
+  z-index: -2;
+}
+
+.form-pretty::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 120%;
+  position: absolute;
+  left: -50%;
+  top: -50%;
+  z-index: -4;
+  background: linear-gradient(0deg, transparent, transparent, #8a2be2, #8a2be2, #8a2be2);
+  transform-origin: bottom right;
+  animation-name: ground;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+}
+
+.form-pretty::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 120%;
+  position: absolute;
+  left: -50%;
+  top: -50%;
+  z-index: -4;
+  background: linear-gradient(0deg, transparent, transparent, #0d6efd, #0d6efd, #0d6efd);
+  transform-origin: bottom right;
+  animation-name: ground;
+  animation-duration: 6s;
+  animation-delay: -3s;
+  animation-iteration-count: infinite;
+}
+
+.form-pretty button {
+  background: linear-gradient(-35deg, #0d6dfd, #892be2) !important;
+  border: none;
+}
+
+@keyframes ground {
+  0% {
+    transform: rotate(0grad);
+  }
+
+  100% {
+    transform: rotate(401grad);
+  }
+}
+
+.backgroun-linear {
+  /* background: linear-gradient(45deg, #0d6efd, #8a2be2); */
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+.backgroun-linear::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: -6;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(-35deg, #0d6dfd, #892be2);
+}
