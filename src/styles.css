@@ -3,7 +3,7 @@
   display: block;
   width: 90%;
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 500px;
   padding: 20px;
   overflow: hidden;
   border-radius: 20px;
@@ -15,6 +15,7 @@
 .form-pretty .input-group {
   filter: drop-shadow(0 0 1px #300e50);
 }
+
 
 .form-pretty * {
   transition: all 0.1s ease-in;
@@ -32,7 +33,7 @@
   z-index: -1;
   left: 5px;
   top: 5px;
-  background: #ffffff;
+  /* background: #ffffff70; */
   border-radius: 20px;
 }
 
@@ -44,7 +45,8 @@
   left: 5px;
   top: 5px;
   border-radius: 20px;
-  background: #fffffff0;
+  background: #ffffff81;
+  backdrop-filter: blur(10px);
   /* background: #b8b8b8 url('../../../assets/angularloge.png');
     background-position: center center;
     background-repeat: no-repeat;
@@ -119,3 +121,5 @@
   height: 100%;
   background: linear-gradient(-35deg, #0d6dfd, #892be2);
 }
+
+.cursor-pointer{cursor: pointer; user-select: none;}

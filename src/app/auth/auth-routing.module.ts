@@ -6,7 +6,8 @@ import { MainComponent } from './pages/main/main.component';
 
 const routes: Routes = [
     {
-        path:'',
+        path:'', 
+        component: MainComponent,
         children : [
             {
               path: 'login',
@@ -15,10 +16,6 @@ const routes: Routes = [
             {
               path: 'logup',
               component: LogupComponent
-            },
-            {
-              path: 'main', 
-              component: MainComponent
             },
             {
               path: '**',

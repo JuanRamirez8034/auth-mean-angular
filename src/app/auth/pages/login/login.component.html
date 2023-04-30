@@ -25,8 +25,8 @@
             <span class="input-group-text fs-3"><i class="bi bi-envelope-check-fill"></i></span>
           </div>
           <!-- Mensaje error input -->
-          <div class="w-100" >
-            <span class="fs-6 text-danger"></span>
+          <div class="w-100" *ngIf="ValidInput.valid('email')">
+            <span class="fs-6 text-danger">The email field is required, min 3 chars</span>
           </div>
         </div>
     
@@ -46,15 +46,15 @@
             <span class="input-group-text fs-3"><i class="bi bi-shield-check"></i></span>
           </div>
           <!-- Mensaje error input -->
-          <div class="w-100" >
-            <span class="fs-6 text-danger"></span>
+          <div class="w-100" *ngIf="ValidInput.valid('password')">
+            <span class="fs-6 text-danger">The password field is required, min 6 chars, max 18 chars</span>
           </div>
         </div>
     
         <!-- btn x2 -->
         <div class="row justify-content-between mt-1">
           <div class="col-5 d-flex align-items-end">
-            <span class="text-decoration-underline text-primary fs-5">I not have an account</span>
+            <a class="text-decoration-underline text-primary fs-6 cursor-pointer" routerLink="../logup">I not have an account</a>
           </div>
           <div class="col-5 d-flex align-items-end">
             <button type="submit" class="btn btn-primary w-100 py-2" [disabled]="form.invalid"><i class="bi bi-box-arrow-in-down-right"></i>Login</button>
@@ -63,3 +63,5 @@
         
     </form>
 </div>
+<!-- spinner -->
+<app-spinner1 [fullScreen]="true" [visible]="SpinnerActive" text="Loading..."></app-spinner1>
