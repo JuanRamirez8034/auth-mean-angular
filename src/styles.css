@@ -110,6 +110,10 @@
   background: transparent;
 }
 
+.bg-gradient-1 {
+  background: linear-gradient(162deg, #0d6efd, #8a2be2);
+}
+
 .backgroun-linear::before {
   content: '';
   display: block;

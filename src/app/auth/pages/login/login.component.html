@@ -52,16 +52,27 @@
         </div>
     
         <!-- btn x2 -->
-        <div class="row justify-content-between mt-1">
-          <div class="col-5 d-flex align-items-end">
+        <div class="row justify-content-center">
+          <div class="col-10 d-flex align-items-end mb-3">
+            <button type="submit" class="btn btn-primary w-100 py-2" [disabled]="form.invalid"><i class="bi bi-box-arrow-in-down-right"></i>Login</button>
+          </div>
+          <div class="col-10 d-flex align-items-end justify-content-center mt-2">
             <a class="text-decoration-underline text-primary fs-6 cursor-pointer" routerLink="../logup">I not have an account</a>
           </div>
-          <div class="col-5 d-flex align-items-end">
-            <button type="submit" class="btn btn-primary w-100 py-2" [disabled]="form.invalid"><i class="bi bi-box-arrow-in-down-right"></i>Login</button>
+          <div class="d-flex justify-content-center mt-1">
+            <a class="text-decoration-underline text-primary fs-6 cursor-pointer" routerLink="../reset-account">Forgot my password</a>
           </div>
         </div>
         
     </form>
 </div>
 <!-- spinner -->
-<app-spinner1 [fullScreen]="true" [visible]="SpinnerActive" text="Loading..."></app-spinner1>
+<app-spinner1 [fullScreen]="true" [visible]="SpinnerActive"></app-spinner1>
+<!-- alerta tipo snack -->
+<app-snack 
+  [visible]="showAlert.visible" 
+  (visibleChange)="showAlert.visible = $event" 
+  [text]="showAlert.text" 
+  type="danger"
+  [timeOut]="5000"
+></app-snack>

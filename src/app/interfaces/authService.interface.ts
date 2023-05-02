@@ -14,4 +14,5 @@ export interface Data {
     uid:      string;
     userName: string;
     utk:      string;
+    email: string;
 }

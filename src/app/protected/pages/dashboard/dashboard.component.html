@@ -1,1 +1,37 @@
-<p>dashboard works!</p>
+<div class="bg-gradient-1 d-flex px-3 py-2 w-100 justify-content-between navbar text-white position-sticky" style="top:0;">
+    
+  <div class="navbar-brand text-white fw-medium">
+    Welcome, {{dataUser.userName}}.
+  </div>
+  
+  <button 
+    class="btn h-auto fs-3" 
+    type="button" 
+    data-bs-toggle="offcanvas" 
+    data-bs-target="#toolsBar"
+    aria-controls="toolsBar"
+  >
+    <i class="bi bi-list text-white fw-medium"></i>
+  </button>
+</div>
+
+
+<div class="offcanvas offcanvas-start bg-gradient-1" tabindex="-1" id="toolsBar">
+  <div class="offcanvas-header text-white fw-medium border-bottom border-white border-opacity-25">
+    <h5 class="offcanvas-title">Options <i class="bi bi-gear"></i></h5>
+    <button type="button" class="btn border-0 text-white fs-3 p-0" data-bs-dismiss="offcanvas" aria-label="Close"><i class="bi bi-x"></i></button>
+  </div>
+  <div class="offcanvas-body">
+    <button (click)="logout();" class="btn btn-outline-light d-block w-100"><i class="bi bi-box-arrow-right"></i> Logout</button>
+  </div>
+</div>
+
+<!-- información del usuario -->
+<div class="d-block w-100 min-vh-100 p-3 bg-secondary m-0 bg-opacity-75 text-white">
+  <h1>Sesion user data</h1>
+  <p><span class="fw-bold">id:</span>{{dataUser.uid}}</p>
+  <p><span class="fw-bold">user:</span>{{dataUser.userName}}</p>
+  <p><span class="fw-bold">email:</span>{{dataUser.email}}</p>
+
+  <button class="btn btn-outline-info" (click)="renew()">renew</button>
+</div>

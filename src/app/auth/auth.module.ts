@@ -6,6 +6,7 @@ import { MainComponent } from './pages/main/main.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SpinnersModule } from '../shared/spinners/spinners.module';
+import { AlertsModule } from '../shared/alerts/alerts.module';
 
 
 
@@ -19,6 +20,7 @@ import { SpinnersModule } from '../shared/spinners/spinners.module';
     CommonModule,
     ReactiveFormsModule,
     AuthRoutingModule,
+    AlertsModule,
     SpinnersModule,
   ]
 })

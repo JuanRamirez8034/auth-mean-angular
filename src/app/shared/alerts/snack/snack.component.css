@@ -1,0 +1,15 @@
+.snack-conainer {
+    position: fixed;
+    left: 0;
+    bottom: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    transition: all ease-in-out 800ms;
+    opacity: 1;
+}
+
+.hide {
+    bottom: -10rem;
+    opacity: 0;
+}
