@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {environment} from "../../environments/environment.development";
-import { LoginData, AuthResp } from 'src/app/interfaces/authService.interface';
+import { LoginData, AuthResp, LogupData } from 'src/app/interfaces/authService.interface';
 import { Observable, catchError, map, of } from 'rxjs';
 import { LocalStorangeService } from './local-storange.service';
 import { Router } from '@angular/router';
@@ -42,6 +42,20 @@ export class AuthService {
     
     return this.http.post<AuthResp>(`${this.API}/auth/login`, data)
       .pipe(map(AuthResp => {
+        // asigando el usuario a la variable privada
+        this._aviableUser = AuthResp.data![0];
+        // almacenando la informacion en el local storange
+        this.LStorange.saveSesionData(AuthResp.data![0]);
+        // retornando el codigo de estado
+        return AuthResp.statusCode;
+      })
+    );
+  }
+
+  public authLogup(data:LogupData):Observable<number>{
+    return this.http.post<AuthResp>(`${this.API}/auth/logup`, data, {headers:this.headers})
+    .pipe(
+      map(AuthResp => {
         // asigando el usuario a la variable privada
         this._aviableUser = AuthResp.data![0];
         // almacenando la informacion en el local storange

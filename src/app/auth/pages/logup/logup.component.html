@@ -2,7 +2,7 @@
 
     <h1 class="w-100 text-white text-center m-0">Auth MEAN <i class="bi bi-fingerprint"></i></h1>
 
-    <form autocomplete="off" class="form-pretty mb-5">
+    <form autocomplete="off" class="form-pretty mb-5" [formGroup]="form" (ngSubmit)="logup();">
 
         <div class="backgorund-c1"></div>
         <div class="backgorund-c2"></div>
@@ -12,52 +12,73 @@
         <!-- Input x2 -->
         <div class="row">
           <div class="col-md-6">
-            <!-- Input FullName -->
+            <!-- Input First name -->
             <div class="w-100 mb-2">
               <div class="input-group">
                 <div class="form-floating">
                   <input 
                     class="form-control"
                     type="text"
-                    id="fullName"
-                    placeholder="Full Name"
-                    
+                    id="name"
+                    placeholder="Name"
+                    formControlName="name"
                   >
-                  <label for="fullName">Full Name</label>
+                  <label for="name">Name</label>
                 </div>
                 <span class="input-group-text fs-3"><i class="bi bi-person-circle"></i></span>
               </div>
               <!-- Mensaje error input -->
-              <div class="w-100" >
-                <span class="fs-6 text-danger"></span>
+              <div class="w-100" *ngIf="ValidInput.valid('name')">
+                <span class="fs-6 text-danger">The name field is required, min 3 chars</span>
               </div>
             </div>
           </div>
     
           <div class="col-md-6">
-            <!-- Input UserName -->
+            <!-- Input LastName -->
             <div class="w-100 mb-2">
               <div class="input-group">
                 <div class="form-floating">
                   <input 
                     class="form-control"
                     type="text"
-                    id="userName"
-                    placeholder="User name"
-                    
+                    id="lastName"
+                    placeholder="last name"
+                    formControlName="lastName"
                   >
-                  <label for="userName">User name</label>
+                  <label for="lastName">last name</label>
                 </div>
                 <span class="input-group-text fs-3"><i class="bi bi-person-check-fill"></i></span>
               </div>
               <!-- Mensaje error input -->
-              <div class="w-100" >
-                <span class="fs-6 text-danger"></span>
+              <div class="w-100" *ngIf="ValidInput.valid('lastName')">
+                <span class="fs-6 text-danger">The last name field is required, min 3 chars</span>
               </div>
             </div>
           </div>
         </div>
-    
+
+        <!-- Input UserName -->
+        <div class="w-100 mb-2">
+          <div class="input-group">
+            <div class="form-floating">
+              <input 
+                class="form-control"
+                type="text"
+                id="userName"
+                placeholder="User name"
+                formControlName="userName"
+              >
+              <label for="userName">User name</label>
+            </div>
+            <span class="input-group-text fs-3"><i class="bi bi-person-check-fill"></i></span>
+          </div>
+          <!-- Mensaje error input -->
+          <div class="w-100" *ngIf="ValidInput.valid('userName')">
+            <span class="fs-6 text-danger">The user name field is required. Min 3 chars Max 20chars.</span>
+          </div>
+        </div>
+
         <!-- Input email -->
         <div class="w-100 mb-2">
           <div class="input-group">
@@ -67,18 +88,83 @@
                 type="email"
                 id="email"
                 placeholder="Email"
-                
+                formControlName="email"
               >
               <label for="email">Email</label>
             </div>
             <span class="input-group-text fs-3"><i class="bi bi-envelope-check-fill"></i></span>
           </div>
           <!-- Mensaje error input -->
-          <div class="w-100" >
-            <span class="fs-6 text-danger"></span>
+          <div class="w-100" *ngIf="ValidInput.valid('email')">
+            <span class="fs-6 text-danger">The email field forma is invild</span>
           </div>
         </div>
     
+        <!-- Input phone -->
+        <div class="w-100 mb-2">
+          <div class="input-group">
+            <div class="form-floating">
+              <input 
+                class="form-control"
+                type="tel"
+                id="phone"
+                placeholder="Phone"
+                formControlName="phone"
+              >
+              <label for="phone">Phone</label>
+            </div>
+            <span class="input-group-text fs-3"><i class="bi bi-telephone-inbound-fill"></i></span>
+          </div>
+          <!-- Mensaje error input -->
+          <div class="w-100" *ngIf="ValidInput.valid('phone')">
+            <span class="fs-6 text-danger">The phone field is required. Please typed valid phone</span>
+          </div>
+        </div>
+        
+        
+        <!-- Input bornDate -->
+        <div class="w-100 mb-2">
+          <div class="input-group">
+            <div class="form-floating">
+              <input 
+                class="form-control"
+                type="date"
+                id="bornDate"
+                placeholder="Born Date"
+                formControlName="bornDate"
+              >
+              <label for="bornDate">Born Date</label>
+            </div>
+            <span class="input-group-text fs-3"><i class="bi bi-calendar-check"></i></span>
+          </div>
+          <!-- Mensaje error input -->
+          <div class="w-100" *ngIf="ValidInput.valid('bornDate')">
+            <span class="fs-6 text-danger">The phone field is required. Please typed a valid born date</span>
+          </div>
+        </div> 
+
+
+        <!-- Input country -->
+        <div class="w-100 mb-2">
+          <div class="input-group">
+            <div class="form-floating">
+              <input 
+                class="form-control"
+                type="text"
+                id="country"
+                placeholder="Country"
+                formControlName="country"
+              >
+              <label for="country">Country</label>
+            </div>
+            <span class="input-group-text fs-3"><i class="bi bi-globe"></i></span>
+          </div>
+          <!-- Mensaje error input -->
+          <div class="w-100" *ngIf="ValidInput.valid('country')">
+            <span class="fs-6 text-danger">The country field is required</span>
+          </div>
+        </div> 
+
         <!-- Input password -->
         <div class="w-100 mb-2">
           <div class="input-group">
@@ -88,38 +174,23 @@
                 type="password"
                 id="password"
                 placeholder="Password"
-                
+                formControlName="password"
               >
               <label for="password">Password</label>
             </div>
             <span class="input-group-text fs-3"><i class="bi bi-shield-check"></i></span>
           </div>
           <!-- Mensaje error input -->
-          <div class="w-100" >
-            <span class="fs-6 text-danger"></span>
+          <div class="w-100" *ngIf="ValidInput.valid('password')">
+            <span class="fs-6 text-danger">The password field is required. Min 6 chars, max 18chars.
+              <br>- Min 2 lowerCase letters.
+              <br>- Min 2 upperCase letters.
+              <br>- Min 2 numbers.
+              <br>- Min 2 especial chars.
+            </span>
           </div>
         </div>
-    
-        <!-- Input password -->
-        <div class="w-100 mb-2">
-          <div class="input-group">
-            <div class="form-floating">
-              <input 
-                class="form-control"
-                type="password"
-                id="repeatPassword"
-                placeholder="Repeat Password"
-                
-              >
-              <label for="repeatPassword">Repeat Password</label>
-            </div>
-            <span class="input-group-text fs-3"><i class="bi bi-shield-fill-check"></i></span>
-          </div>
-          <!-- Mensaje error input -->
-          <div class="w-100" >
-            <span class="fs-6 text-danger">* Passwords do not mathch</span>
-          </div>
-        </div>
+
     
         <!-- btn x2 -->
         <div class="row justify-content-between mt-1">
@@ -127,9 +198,21 @@
             <span class="text-decoration-underline text-primary fs-6 cursor-pointer" routerLink="../login">I have an account</span>
           </div>
           <div class="col-5 d-flex align-items-end">
-            <button type="button" class="btn btn-primary w-100 py-2"><i class="bi bi-box-arrow-in-down-right"></i>Login</button>
+            <button type="submit" class="btn btn-primary w-100 py-2" [disabled]="form.invalid"><i class="bi bi-box-arrow-in-down-right"></i>Login</button>
           </div>
         </div>
         
     </form>
 </div>
+<!-- spinner -->
+<app-spinner1
+  [fullScreen]="true"
+  [visible]="spinnerVisible"
+></app-spinner1>
+<app-snack
+  [timeOut]="snapConfig.time"
+  [type]="snapConfig.type"
+  [visible]="snapConfig.visible"
+  [text]="snapConfig.text"
+  (visibleChange)="snapConfig.visible = $event"
+></app-snack>
