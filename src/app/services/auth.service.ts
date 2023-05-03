@@ -72,7 +72,11 @@ export class AuthService {
         // retornando el booleando verdadero en caso de que el codigo sea 200
         return (AuthResp.statusCode === 200);
       }),
-      catchError(error => {console.log(error);return of(false)}), // en caso de error se regresa falso en forma de observable
+      catchError(error => {
+        console.log(error);
+        this.LStorange.clear();//limpiando datos de sesion en caso de error
+        return of(false)
+      }), // en caso de error se regresa falso en forma de observable
     );
   }
 
