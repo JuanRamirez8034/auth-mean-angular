@@ -71,8 +71,6 @@ export class AuthService {
     
     // añadiendo token a los headers
     this.headers =  this.headers.set('X-TK-X', this.LStorange.getSesionData()?.utk ?? '');
-
-    console.log(this.headers.get('X-TK-X'));
     
 
     return this.http.get<AuthResp>(`${this.API}/auth/renew/token`, {headers:this.headers})
@@ -92,6 +90,28 @@ export class AuthService {
         return of(false)
       }), // en caso de error se regresa falso en forma de observable
     );
+  }
+
+  public resetPassword(token:string, newPassword:string):Observable<boolean>{
+    // agregando el token a los headers
+    this.headers = this.headers.set('X-TK-X', token);
+    return this.http.post<AuthResp>(`${this.API}/auth/reset-access`, {password:newPassword}, {headers:this.headers})
+    .pipe(
+      map((resp:AuthResp)=>{
+        if(resp.statusCode !== 200)return false;
+        return true;
+      }),
+    );
+  }
+
+  public requestResetPassword(email:string):Observable<boolean>{
+    return this.http.post<AuthResp>(`${this.API}/auth/recovery`, {email}, {headers:this.headers})
+    .pipe(
+      map(resp=>{
+        if(resp.statusCode === 200)return true;
+        return false;
+      })
+    )
   }
 
   public validSesion():boolean{

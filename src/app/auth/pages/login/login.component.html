@@ -36,14 +36,21 @@
             <div class="form-floating">
               <input 
                 class="form-control"
-                type="password"
+                [type]="(showPass ? 'text' : 'password')"
                 id="password"
                 placeholder="Password"
                 formControlName="password"
               >
               <label for="password">Password</label>
             </div>
-            <span class="input-group-text fs-3"><i class="bi bi-shield-check"></i></span>
+            <!-- icono contraseña -->
+            <span 
+              class="input-group-text fs-3 cursor-pointer" 
+              (click)="showPass = !showPass"
+            >
+              <i [class]="'bi ' + (!showPass ? 'bi-eye-slash' : 'bi-eye')"></i>
+            </span>
+            <!-- fin icono contraseña -->
           </div>
           <!-- Mensaje error input -->
           <div class="w-100" *ngIf="ValidInput.valid('password')">
@@ -60,7 +67,7 @@
             <a class="text-decoration-underline text-primary fs-6 cursor-pointer" routerLink="../logup">I not have an account</a>
           </div>
           <div class="d-flex justify-content-center mt-1">
-            <a class="text-decoration-underline text-primary fs-6 cursor-pointer" routerLink="../reset-account">Forgot my password</a>
+            <a class="text-decoration-underline text-primary fs-6 cursor-pointer" routerLink="../forgot-password">Forgot my password</a>
           </div>
         </div>
         

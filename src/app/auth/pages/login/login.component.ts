@@ -13,6 +13,7 @@ export class LoginComponent {
 
   public form !: FormGroup;
   public SpinnerActive !: boolean;
+  public showPass !: boolean;
   public showAlert : {visible:boolean; text:string} = {visible:false, text:''};
 
   constructor(private fb:FormBuilder, public ValidInput: ValidInputService, private auth : AuthService, private router:Router){
@@ -24,6 +25,7 @@ export class LoginComponent {
     this.ValidInput.buildInstanceForm(this.form);
 
     this.SpinnerActive = false;
+    this.showPass = false;
   }
 
   // funcion de envio de datos

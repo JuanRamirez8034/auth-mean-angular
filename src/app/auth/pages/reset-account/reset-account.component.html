@@ -1,0 +1,67 @@
+<div class="backgroun-linear d-flex flex-wrap align-content-center gap-5 justify-content-center align-items-center p-1 w-100 min-vh-100">
+
+  <h1 class="w-100 text-white text-center m-0">Auth MEAN <i class="bi bi-fingerprint"></i></h1>
+
+  <form autocomplete="off" (ngSubmit)="resetAccount()" class="form-pretty mb-5" [formGroup]="form">
+
+      <div class="backgorund-c1"></div>
+      <div class="backgorund-c2"></div>
+  
+      <h3><i class="bi bi-x-diamond-fill fs-2 fw-bold"></i> Reset password</h3>
+  
+      <!-- Input password -->
+      <div class="w-100 mb-5">
+        <div class="input-group">
+          <div class="form-floating">
+            <input 
+              autocomplete="false"
+              class="form-control"
+              [type]="(showPass ? 'text' : 'password')"
+              id="password"
+              placeholder="Password"
+              formControlName="password"
+            >
+            <label for="password">Password</label>
+          </div>
+          <!-- icono contraseña -->
+          <span 
+            class="input-group-text fs-3 cursor-pointer" 
+            (click)="showPass = !showPass"
+          >
+            <i [class]="'bi text-black ' + (!showPass ? 'bi-eye-slash' : 'bi-eye')"></i>
+          </span>
+          <!-- fin icono contraseña -->
+          <!-- <span class="input-group-text fs-3"><i class="bi bi-shield-check"></i></span> -->
+        </div>
+        <!-- Mensaje error input -->
+        <div class="w-100" *ngIf="controlValid.valid('password')">
+          <span class="fs-6 text-danger">
+            The password field is required
+            <br>- Min 6 chars.
+            <br>- Max 18 chars.
+            <br>- Min 2 numbers.
+            <br>- Min 2 uppercase letters.
+            <br>- Min 2 lowerscase letters.
+            <br>- Min 2 special chars.
+          </span>
+        </div>
+      </div>
+  
+      <!-- btn x2 -->
+      <div class="row justify-content-center">
+        <div class="col-10 d-flex align-items-end mb-3">
+          <button type="submit" class="btn btn-primary w-100 py-2" [disabled]="form.invalid"><i class="bi bi-box-arrow-in-down-right"></i>Reset</button>
+        </div>
+      </div>
+      
+  </form>
+</div>
+<!-- spinner -->
+<app-spinner1 [fullScreen]="true" [visible]="SpinnerActive" />
+<!-- alerta tipo snack -->
+<app-snack 
+[visible]="showAlert.visible" 
+(visibleChange)="showAlert.visible = $event" 
+[text]="showAlert.text" 
+[type]="showAlert.type"
+[timeOut]="5000" />

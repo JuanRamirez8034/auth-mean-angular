@@ -7,6 +7,8 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SpinnersModule } from '../shared/spinners/spinners.module';
 import { AlertsModule } from '../shared/alerts/alerts.module';
+import { ResetAccountComponent } from './pages/reset-account/reset-account.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 
 
@@ -14,7 +16,9 @@ import { AlertsModule } from '../shared/alerts/alerts.module';
   declarations: [
     LoginComponent,
     LogupComponent,
-    MainComponent
+    MainComponent,
+    ResetAccountComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     CommonModule,

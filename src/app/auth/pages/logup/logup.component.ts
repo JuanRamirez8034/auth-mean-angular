@@ -13,6 +13,7 @@ export class LogupComponent {
 
   public form !: FormGroup;
   public spinnerVisible !: boolean;
+  public showPass !: boolean;
   public snapConfig : {time:number; visible:boolean; type:'danger'|'success'; text:string;} = {
     time:2000,
     visible:false,
@@ -35,6 +36,7 @@ export class LogupComponent {
     this.ValidInput.buildInstanceForm(this.form);
 
     this.spinnerVisible = false;
+    this.showPass = false;
   }
 
 
